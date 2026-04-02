@@ -27,16 +27,24 @@ for name, info in data.items():
         print(f'{name}\t{repo}')
 ")
 
-# Extract installed plugins: plugin@marketplace
+# Extract enabled plugins only (cross-ref with settings.json)
+SETTINGS="$CLAUDE_DIR/settings.json"
 PLUGINS=()
 while IFS= read -r line; do
   PLUGINS+=("$line")
 done < <(python3 -c "
-import json
+import json, os
 with open('$INSTALLED') as f:
-    data = json.load(f)
-for key in data.get('plugins', {}):
-    # key format: plugin_name@marketplace_name
+    installed = json.load(f)
+enabled = {}
+settings_path = '$SETTINGS'
+if os.path.exists(settings_path):
+    with open(settings_path) as f:
+        enabled = json.load(f).get('enabledPlugins', {})
+for key in installed.get('plugins', {}):
+    # Skip plugins explicitly disabled in settings
+    if enabled.get(key) is False:
+        continue
     print(key)
 ")
 

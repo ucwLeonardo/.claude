@@ -20,9 +20,7 @@ declare -A MARKETPLACES=(
 # Step 2: Plugins to install
 PLUGINS=(
   "claude-mem@thedotmack"
-  "frontend-design@claude-plugins-official"
   "code-simplifier@claude-plugins-official"
-  "superpowers@claude-plugins-official"
   "playwright@claude-plugins-official"
   "cli-anything@cli-anything"
   "everything-claude-code@everything-claude-code"
