@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Install all Claude Code plugins from marketplaces.
+# Run this on a fresh machine after cloning the ~/.claude repo.
+# Usage: bash ~/.claude/scripts/install-plugins.sh
+
+set -euo pipefail
+
+# Step 1: Add marketplaces (repo -> local name)
+declare -A MARKETPLACES=(
+  ["anthropics/claude-plugins-official"]="claude-plugins-official"
+  ["thedotmack/claude-mem"]="thedotmack"
+  ["HKUDS/CLI-Anything"]="cli-anything"
+  ["affaan-m/everything-claude-code"]="everything-claude-code"
+  ["nextlevelbuilder/ui-ux-pro-max-skill"]="ui-ux-pro-max-skill"
+  ["uditgoenka/autoresearch"]="autoresearch"
+  ["openai/codex-plugin-cc"]="openai-codex"
+)
+
+# Step 2: Plugins to install (plugin@marketplace format)
+PLUGINS=(
+  "claude-mem@thedotmack"
+  "frontend-design@claude-plugins-official"
+  "code-simplifier@claude-plugins-official"
+  "superpowers@claude-plugins-official"
+  "playwright@claude-plugins-official"
+  "cli-anything@cli-anything"
+  "everything-claude-code@everything-claude-code"
+  "ui-ux-pro-max@ui-ux-pro-max-skill"
+  "autoresearch@autoresearch"
+  "codex@openai-codex"
+)
+
+echo "=== Adding ${#MARKETPLACES[@]} marketplaces ==="
+echo ""
+for repo in "${!MARKETPLACES[@]}"; do
+  name="${MARKETPLACES[$repo]}"
+  echo "-> Adding marketplace: ${name} (${repo})"
+  claude plugin marketplace add "${repo}" 2>&1 || echo "   (already added or failed)"
+done
+
+echo ""
+echo "=== Installing ${#PLUGINS[@]} plugins ==="
+echo ""
+for plugin in "${PLUGINS[@]}"; do
+  echo "-> Installing: ${plugin}"
+  if claude plugin install "${plugin}" 2>&1; then
+    echo "   OK"
+  else
+    echo "   FAILED: ${plugin} - try manually: claude plugin install ${plugin}"
+  fi
+  echo ""
+done
+
+echo "Done. Run 'claude plugin list' to verify."
