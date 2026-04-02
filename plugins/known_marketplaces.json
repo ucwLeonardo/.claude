@@ -1,0 +1,58 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/home/ubuntu/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-04-02T09:09:54.300Z"
+  },
+  "thedotmack": {
+    "source": {
+      "source": "github",
+      "repo": "thedotmack/claude-mem"
+    },
+    "installLocation": "/home/ubuntu/.claude/plugins/marketplaces/thedotmack",
+    "lastUpdated": "2026-02-28T05:15:41.955Z"
+  },
+  "cli-anything": {
+    "source": {
+      "source": "github",
+      "repo": "HKUDS/CLI-Anything"
+    },
+    "installLocation": "/home/ubuntu/.claude/plugins/marketplaces/cli-anything",
+    "lastUpdated": "2026-03-12T14:51:11.274Z"
+  },
+  "everything-claude-code": {
+    "source": {
+      "source": "github",
+      "repo": "affaan-m/everything-claude-code"
+    },
+    "installLocation": "/home/ubuntu/.claude/plugins/marketplaces/everything-claude-code",
+    "lastUpdated": "2026-03-24T13:35:18.428Z"
+  },
+  "ui-ux-pro-max-skill": {
+    "source": {
+      "source": "github",
+      "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+    },
+    "installLocation": "/home/ubuntu/.claude/plugins/marketplaces/ui-ux-pro-max-skill",
+    "lastUpdated": "2026-03-27T13:01:22.081Z"
+  },
+  "autoresearch": {
+    "source": {
+      "source": "github",
+      "repo": "uditgoenka/autoresearch"
+    },
+    "installLocation": "/home/ubuntu/.claude/plugins/marketplaces/autoresearch",
+    "lastUpdated": "2026-03-30T11:10:56.910Z"
+  },
+  "openai-codex": {
+    "source": {
+      "source": "github",
+      "repo": "openai/codex-plugin-cc"
+    },
+    "installLocation": "/home/ubuntu/.claude/plugins/marketplaces/openai-codex",
+    "lastUpdated": "2026-03-31T16:26:47.155Z"
+  }
+}

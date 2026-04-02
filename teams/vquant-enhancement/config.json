@@ -1,0 +1,19 @@
+{
+  "name": "vquant-enhancement",
+  "description": "Implement 3-phase vquant enhancement: directives, paper trading, GPU acceleration",
+  "createdAt": 1772723199000,
+  "leadAgentId": "team-lead@vquant-enhancement",
+  "leadSessionId": "0c390f29-0a1c-40fb-baef-0c2434c6dfb0",
+  "members": [
+    {
+      "agentId": "team-lead@vquant-enhancement",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6[1m]",
+      "joinedAt": 1772723199000,
+      "tmuxPaneId": "",
+      "cwd": "/mnt/d/project/vquant",
+      "subscriptions": []
+    }
+  ]
+}

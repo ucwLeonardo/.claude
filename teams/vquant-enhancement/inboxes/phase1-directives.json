@@ -1,0 +1,8 @@
+[
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1772723710606@phase1-directives\",\"from\":\"team-lead\",\"reason\":\"Great work, Phase 1 is complete. Shutting down.\",\"timestamp\":\"2026-03-05T15:15:10.606Z\"}",
+    "timestamp": "2026-03-05T15:15:10.606Z",
+    "read": true
+  }
+]

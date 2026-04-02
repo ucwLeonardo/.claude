@@ -1,0 +1,34 @@
+{
+  "name": "vquant-builders",
+  "description": "Build the vquant automatic quantitative trading system - multi-agent team for research, architecture, implementation, and review",
+  "createdAt": 1772332656874,
+  "leadAgentId": "team-lead@vquant-builders",
+  "leadSessionId": "091fa291-cbd8-4dc1-9a4b-ccfe633ba839",
+  "members": [
+    {
+      "agentId": "team-lead@vquant-builders",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6[1m]",
+      "joinedAt": 1772332656874,
+      "tmuxPaneId": "",
+      "cwd": "/mnt/d/project",
+      "subscriptions": []
+    },
+    {
+      "agentId": "quality-reviewer-p1@vquant-builders",
+      "name": "quality-reviewer-p1",
+      "agentType": "superpowers:code-reviewer",
+      "model": "inherit",
+      "prompt": "Review the Phase 1 implementation of the vquant quantitative trading system.\n\nWHAT_WAS_IMPLEMENTED: Phase 1 - Project Scaffold + Core Engine. 38 files, ~1603 lines. Includes: pyproject.toml, full directory structure, core/enums.py (all trading enums), core/events.py (6 frozen dataclasses with Decimal), core/event_bus.py (sync+async pub/sub), core/clock.py (SystemClock + SimulatedClock), core/cache.py (thread-safe in-memory store), core/engine.py (TradingEngine with FSM lifecycle), db/models.py (7 SQLAlchemy 2.0 ORM models), db/session.py (async session factory), config/settings.py (Pydantic Settings), config/loader.py (YAML with env var interpolation), config/default.yaml, 73 unit tests passing, ruff clean, mypy clean.\n\nPLAN_OR_REQUIREMENTS: Build foundation for event-driven quantitative trading system. Key requirements: Decimal for all monetary values, frozen event dataclasses, type-safe EventBus with sync (backtest) and async (live) dispatch, Clock abstraction for time, thread-safe Cache, TradingEngine with PRE_INIT->READY->RUNNING->STOPPED FSM, SQLAlchemy 2.0 async models, Pydantic config with YAML+env interpolation.\n\nBASE_SHA: Initial commit (greenfield project)\nHEAD_SHA: 484e9e6\n\nDESCRIPTION: Foundation of the vquant automatic quantitative trading system - all subsequent phases (exchange adapters, strategies, backtesting, execution, risk, deployment) build on this.\n\nReview the code at ~/project/vquant/src/vquant/ and ~/project/vquant/tests/. Focus on:\n1. Code quality, clarity, maintainability\n2. Proper use of Decimal (no float leaks for money)\n3. Error handling\n4. Test quality (do tests verify real behavior?)\n5. Thread safety of Cache\n6. EventBus correctness (sync vs async paths)\n7. FSM correctness in TradingEngine\n8. SQLAlchemy 2.0 best practices\n9. Any security concerns (credential handling in config)",
+      "color": "purple",
+      "planModeRequired": false,
+      "joinedAt": 1772356909024,
+      "tmuxPaneId": "%9",
+      "cwd": "/mnt/d/project",
+      "subscriptions": [],
+      "backendType": "tmux",
+      "isActive": true
+    }
+  ]
+}

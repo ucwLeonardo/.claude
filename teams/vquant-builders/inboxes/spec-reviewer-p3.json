@@ -1,0 +1,14 @@
+[
+  {
+    "from": "team-lead",
+    "text": "You are reviewing whether Phase 3 (Strategy Framework) of the vquant trading system matches its spec.\n\n## What Was Requested\n\n**BaseStrategy (strategy/base.py):**\n- ABC with methods: on_bar(bar_event), on_tick(tick_event), on_fill(fill_event), on_start(), on_stop()\n- emit_signal() method to publish SignalEvent to EventBus\n- Access to cache, clock, portfolio state\n- Strategy parameters via Pydantic model\n\n**Strategy Registry (strategy/registry.py):**\n- Decorator-based registration: @register_strategy(\"sma_crossover\")\n- Load strategies by name from config\n- List available strategies\n- Per-strategy YAML parameter loading from config/strategies/\n\n**Indicators (strategy/indicators/):**\n- SMA, EMA, RSI, ATR, Bollinger Bands\n- All use numpy for vectorized computation\n- Incremental update support (not just full recalc)\n\n**Built-in Strategies:**\n- strategy/builtin/sma_crossover.py: SMA crossover (fast/slow periods, BUY on cross above, SELL on cross below)\n- strategy/builtin/momentum.py: RSI-based (buy oversold, sell overbought)\n- strategy/builtin/ml_strategy.py: ML prediction template (joblib model, feature engineering, predict signal)\n\n**Config:** config/strategies/sma_crossover.yaml, config/strategies/momentum.yaml\n\n**Tests:**\n- Unit tests for each indicator with known values\n- Unit tests for SMA crossover strategy (mock bars, verify signals)\n- Unit tests for momentum strategy\n- Unit tests for registry (register, load, list)\n\n## What Implementer Claims\n\n18 files, 1485 lines. All indicators have both incremental O(1) and numpy vectorized. 172 unit tests (47 new). ruff + mypy clean. Committed cbf9745.\n\n## CRITICAL: Do Not Trust the Report\n\nRead the actual code at ~/project/vquant/src/vquant/strategy/ and ~/project/vquant/tests/. Verify:\n\n1. BaseStrategy ABC has ALL required methods + emit_signal + cache/clock access?\n2. Registry has decorator registration + YAML loading + list/create?\n3. ALL 5 indicators implemented with BOTH incremental AND vectorized?\n4. SMA crossover emits correct signals on crossover/crossdown?\n5. Momentum strategy uses RSI with oversold/overbought logic?\n6. ML strategy template loads joblib model?\n7. Config YAML files exist with sensible defaults?\n8. Tests cover each indicator with known values, strategies with mock bars, and registry?\n\nReport ✅ or ❌ with specific file:line references for any issues.",
+    "timestamp": "2026-03-01T14:43:14.211Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1772376335268@spec-reviewer-p3\",\"from\":\"team-lead\",\"reason\":\"Review complete. Shutting down.\",\"timestamp\":\"2026-03-01T14:45:35.268Z\"}",
+    "timestamp": "2026-03-01T14:45:35.268Z",
+    "read": true
+  }
+]

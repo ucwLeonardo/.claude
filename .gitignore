@@ -1,0 +1,75 @@
+# Ignore everything by default
+*
+
+# Track config that should sync across machines
+!.gitignore
+!README.md
+!AGENTS.md
+!PLUGIN_SCHEMA_NOTES.md
+!settings.json
+!marketplace.json
+!plugin.json
+!statusline-command.sh
+!statusline-parse.py
+
+# Directories to sync
+!rules/
+!rules/**
+!agents/
+!agents/**
+!skills/
+!skills/**
+# Exclude skills with embedded git repos (reinstallable)
+skills/web-access/
+!commands/
+!commands/**
+!hooks/
+!hooks/**
+!mcp-configs/
+!mcp-configs/**
+!plugins/
+!plugins/**
+# But exclude plugin marketplace repos (they have .git dirs, reinstallable)
+plugins/marketplaces/
+plugins/cache/
+plugins/data/
+!scripts/
+!scripts/**
+!teams/
+!teams/**
+!ecc/
+!ecc/**
+
+# Hidden config dirs (cursor, opencode, codex, etc.)
+!.agents/
+!.agents/**
+!.codex/
+!.codex/**
+!.cursor/
+!.cursor/**
+!.opencode/
+!.opencode/**
+
+# Explicitly exclude machine-specific / sensitive data
+debug/
+projects/
+sessions/
+session-data/
+session-env/
+cache/
+backups/
+downloads/
+file-history/
+history.jsonl
+homunculus/
+ide/
+metrics/
+paste-cache/
+plans/
+tasks/
+telemetry/
+todos/
+shell-snapshots/
+mcp-health-cache.json
+policy-limits.json
+remote-settings.json
