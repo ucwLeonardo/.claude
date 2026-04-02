@@ -3,7 +3,6 @@
 
 # === TRACK: User-created config only ===
 !.gitignore
-!settings.json
 
 # User-created slash commands
 !commands/
