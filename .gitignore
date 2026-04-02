@@ -1,56 +1,52 @@
 # Ignore everything by default
 *
 
-# Track config that should sync across machines
+# === TRACK: User-created config only ===
 !.gitignore
-!README.md
-!AGENTS.md
-!PLUGIN_SCHEMA_NOTES.md
 !settings.json
-!marketplace.json
-!plugin.json
 !statusline-command.sh
 !statusline-parse.py
 
-# Directories to sync
-!rules/
-!rules/**
-!agents/
-!agents/**
-!skills/
-!skills/**
-# Exclude skills with embedded git repos (reinstallable)
-skills/web-access/
+# User-created commands (slash commands)
 !commands/
 !commands/**
-!hooks/
-!hooks/**
-!mcp-configs/
-!mcp-configs/**
-!plugins/
-!plugins/**
-# But exclude plugin marketplace repos (they have .git dirs, reinstallable)
-plugins/marketplaces/
-plugins/cache/
-plugins/data/
+
+# User-created rules
+!rules/
+!rules/**
+
+# Install script (reinstalls plugins on new machines)
 !scripts/
 !scripts/**
-!teams/
-!teams/**
-!ecc/
-!ecc/**
 
-# Hidden config dirs (cursor, opencode, codex, etc.)
-!.agents/
-!.agents/**
-!.codex/
-!.codex/**
-!.cursor/
-!.cursor/**
-!.opencode/
-!.opencode/**
+# MCP server config
+!mcp-configs/
+!mcp-configs/**
 
-# Explicitly exclude machine-specific / sensitive data
+# User-created skills (add paths here as you create them)
+!skills/
+!skills/learned/
+!skills/learned/**
+# Exclude plugin-installed skills
+skills/web-access/
+
+# === IGNORE: Plugin-installed (reinstalled via install-plugins.sh) ===
+agents/
+.agents/
+.codex/
+.cursor/
+.opencode/
+ecc/
+hooks/
+teams/
+plugins/
+AGENTS.md
+PLUGIN_SCHEMA_NOTES.md
+README.md
+marketplace.json
+plugin.json
+
+# === IGNORE: Machine-specific / ephemeral ===
 debug/
 projects/
 sessions/

@@ -1,8 +1,0 @@
-[
-  {
-    "from": "team-lead",
-    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1772724067745@phase3-accel\",\"from\":\"team-lead\",\"reason\":\"Phase 3 complete. Shutting down.\",\"timestamp\":\"2026-03-05T15:21:07.745Z\"}",
-    "timestamp": "2026-03-05T15:21:07.745Z",
-    "read": true
-  }
-]
