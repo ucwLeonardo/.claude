@@ -14,9 +14,7 @@
   },
   "enabledPlugins": {
     "claude-mem@thedotmack": true,
-    "frontend-design@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": false,
     "playwright@claude-plugins-official": true,
     "cli-anything@cli-anything": true,
     "everything-claude-code@everything-claude-code": true,
@@ -53,6 +51,18 @@
       "source": {
         "source": "github",
         "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
       }
     }
   },
