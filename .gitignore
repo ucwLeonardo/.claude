@@ -4,10 +4,8 @@
 # === TRACK: User-created config only ===
 !.gitignore
 !settings.json
-!statusline-command.sh
-!statusline-parse.py
 
-# User-created commands (slash commands)
+# User-created slash commands
 !commands/
 !commands/**
 
@@ -15,57 +13,5 @@
 !rules/
 !rules/**
 
-# Install script (reinstalls plugins on new machines)
-!scripts/
-!scripts/**
-
-# MCP server config
-!mcp-configs/
-!mcp-configs/**
-
-# User-created skills (add paths here as you create them)
-!skills/
-!skills/learned/
-!skills/learned/**
-# Exclude plugin-installed skills
-skills/web-access/
-
-# === IGNORE: Plugin-installed (reinstalled via install-plugins.sh) ===
-agents/
-.agents/
-.codex/
-.cursor/
-.opencode/
-ecc/
-hooks/
-teams/
-plugins/
-AGENTS.md
-PLUGIN_SCHEMA_NOTES.md
-README.md
-marketplace.json
-plugin.json
-
-# === IGNORE: Machine-specific / ephemeral ===
-debug/
-projects/
-sessions/
-session-data/
-session-env/
-cache/
-backups/
-downloads/
-file-history/
-history.jsonl
-homunculus/
-ide/
-metrics/
-paste-cache/
-plans/
-tasks/
-telemetry/
-todos/
-shell-snapshots/
-mcp-health-cache.json
-policy-limits.json
-remote-settings.json
+# Plugin install script
+!scripts/install-plugins.sh
