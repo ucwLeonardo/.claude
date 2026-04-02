@@ -56,6 +56,19 @@
       }
     }
   },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -q 'claude plugin install\\|claude plugin marketplace add\\|claude plugin uninstall\\|claude plugin remove'; then bash ~/.claude/scripts/sync-plugins.sh; fi"
+          }
+        ]
+      }
+    ]
+  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
