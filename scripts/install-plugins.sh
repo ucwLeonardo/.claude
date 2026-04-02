@@ -51,4 +51,10 @@ for plugin in "${PLUGINS[@]}"; do
   echo ""
 done
 
+echo ""
+echo "=== Installing ECC rules ==="
+echo "After ECC plugin is installed, run in a Claude Code session:"
+echo '  /configure-ecc'
+echo "This installs rules/ and agents/ from ECC."
+echo ""
 echo "Done. Run 'claude plugin list' to verify."
