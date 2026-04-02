@@ -8,15 +8,26 @@
     ]
   },
   "model": "opus[1m]",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -q 'claude plugin install\\|claude plugin marketplace add\\|claude plugin uninstall\\|claude plugin remove'; then bash ~/.claude/scripts/sync-plugins.sh; fi"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bash /home/ubuntu/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "claude-mem@thedotmack": true,
-    "frontend-design@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": false,
     "playwright@claude-plugins-official": true,
     "cli-anything@cli-anything": true,
     "everything-claude-code@everything-claude-code": true,
@@ -55,19 +66,6 @@
         "repo": "openai/codex-plugin-cc"
       }
     }
-  },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -q 'claude plugin install\\|claude plugin marketplace add\\|claude plugin uninstall\\|claude plugin remove'; then bash ~/.claude/scripts/sync-plugins.sh; fi"
-          }
-        ]
-      }
-    ]
   },
   "sandbox": {
     "enabled": true,
