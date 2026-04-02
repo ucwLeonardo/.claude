@@ -51,9 +51,68 @@ for plugin in "${PLUGINS[@]}"; do
 done
 
 echo ""
+echo "=== Installing uv/uvx (required by claude-mem and serena) ==="
+UV_BIN_DIR="$HOME/.claude/bin"
+mkdir -p "$UV_BIN_DIR"
+if command -v uvx &>/dev/null; then
+  echo "   uvx already on PATH: $(command -v uvx)"
+elif [ -x "$UV_BIN_DIR/uvx" ]; then
+  echo "   uvx already installed at $UV_BIN_DIR/uvx"
+else
+  echo "-> Installing uv via pip to temp dir..."
+  TMPUV="$(mktemp -d)"
+  pip3 install uv --target="$TMPUV" --quiet 2>&1 && \
+    cp "$TMPUV/bin/uv" "$UV_BIN_DIR/uv" && \
+    cp "$TMPUV/bin/uvx" "$UV_BIN_DIR/uvx" && \
+    chmod +x "$UV_BIN_DIR/uv" "$UV_BIN_DIR/uvx" && \
+    echo "   Installed uv $(\"$UV_BIN_DIR/uvx\" --version 2>&1) to $UV_BIN_DIR" || \
+    echo "   FAILED: install uv manually — see https://docs.astral.sh/uv/getting-started/installation/"
+  rm -rf "$TMPUV"
+fi
+
+echo ""
+echo "=== Configuring serena MCP server ==="
+MCP_JSON="$HOME/.claude/mcp.json"
+if [ -f "$MCP_JSON" ] && grep -q '"serena"' "$MCP_JSON" 2>/dev/null; then
+  echo "   serena already configured in $MCP_JSON"
+else
+  echo "-> Writing serena config to $MCP_JSON"
+  # Merge with existing mcp.json if present, otherwise create new
+  if [ -f "$MCP_JSON" ]; then
+    # Backup existing
+    cp "$MCP_JSON" "${MCP_JSON}.bak"
+    echo "   Backed up existing mcp.json to ${MCP_JSON}.bak"
+  fi
+  UVX_PATH="$UV_BIN_DIR/uvx"
+  command -v uvx &>/dev/null && UVX_PATH="$(command -v uvx)"
+  cat > "$MCP_JSON" <<MCPEOF
+{
+  "mcpServers": {
+    "serena": {
+      "command": "$UVX_PATH",
+      "args": ["-p", "3.13", "--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context=claude-code", "--project-from-cwd"]
+    }
+  }
+}
+MCPEOF
+  echo "   OK"
+fi
+
+echo ""
+echo "=== Ensuring PATH includes ~/.claude/bin in settings.json ==="
+SETTINGS="$HOME/.claude/settings.json"
+if [ -f "$SETTINGS" ] && grep -q '\.claude/bin' "$SETTINGS" 2>/dev/null; then
+  echo "   PATH already includes .claude/bin in settings.json"
+else
+  echo "   NOTE: Manually add /home/<user>/.claude/bin to env.PATH in $SETTINGS"
+  echo "   so plugins can find uvx at runtime."
+fi
+
+echo ""
 echo "=== Post-install ==="
 echo "After ECC plugin is installed, run in a Claude Code session:"
 echo '  /configure-ecc'
 echo "This installs rules/ and agents/ from ECC."
 echo ""
 echo "Done. Run 'claude plugin list' to verify."
+echo "Restart Claude Code for MCP server changes to take effect."
